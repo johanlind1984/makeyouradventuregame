@@ -22,4 +22,36 @@ public class Story {
 
     public Story() {
     }
+
+    public int getIdStory() {
+        return idStory;
+    }
+
+    public void setIdStory(int idStory) {
+        this.idStory = idStory;
+    }
+
+    public String getBeginning() {
+        return beginning;
+    }
+
+    public void setBeginning(String beginning) {
+        this.beginning = beginning;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
+    public String getDie() {
+        return die;
+    }
+
+    public void setDie(String die) {
+        this.die = die;
+    }
 }
