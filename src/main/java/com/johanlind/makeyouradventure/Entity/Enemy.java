@@ -28,4 +28,52 @@ public class Enemy {
 
     public Enemy() {
     }
+
+    public int getIdEnemy() {
+        return idEnemy;
+    }
+
+    public void setIdEnemy(int idEnemy) {
+        this.idEnemy = idEnemy;
+    }
+
+    public String getNameEnemy() {
+        return nameEnemy;
+    }
+
+    public void setNameEnemy(String nameEnemy) {
+        this.nameEnemy = nameEnemy;
+    }
+
+    public String getImageEnemy() {
+        return imageEnemy;
+    }
+
+    public void setImageEnemy(String imageEnemy) {
+        this.imageEnemy = imageEnemy;
+    }
+
+    public int getHpEnemy() {
+        return hpEnemy;
+    }
+
+    public void setHpEnemy(int hpEnemy) {
+        this.hpEnemy = hpEnemy;
+    }
+
+    public int getEnemyLowDamage() {
+        return enemyLowDamage;
+    }
+
+    public void setEnemyLowDamage(int enemyLowDamage) {
+        this.enemyLowDamage = enemyLowDamage;
+    }
+
+    public int getEnemyHighDamage() {
+        return enemyHighDamage;
+    }
+
+    public void setEnemyHighDamage(int enemyHighDamage) {
+        this.enemyHighDamage = enemyHighDamage;
+    }
 }
