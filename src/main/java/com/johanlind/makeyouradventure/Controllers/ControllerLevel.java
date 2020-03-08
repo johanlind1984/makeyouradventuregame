@@ -1,11 +1,7 @@
 package com.johanlind.makeyouradventure.Controllers;
 
-import com.johanlind.makeyouradventure.Entity.Enemy;
-import com.johanlind.makeyouradventure.Entity.Item;
-import com.johanlind.makeyouradventure.Entity.Story;
-import com.johanlind.makeyouradventure.Repositories.RepositoryEnemy;
-import com.johanlind.makeyouradventure.Repositories.RepositoryItem;
-import com.johanlind.makeyouradventure.Repositories.RepositoryStory;
+import com.johanlind.makeyouradventure.Entity.*;
+import com.johanlind.makeyouradventure.Repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,16 +16,34 @@ public class ControllerLevel {
     private RepositoryEnemy repositoryEnemy;
     @Autowired
     private RepositoryStory repositoryStory;
+    @Autowired
+    private RepositoryQuestion repositoryQuestion;
+    @Autowired
+    private RepositoryAlternatives repositoryAlternatives;
 
     private List<Item> itemList;
     private List<Enemy> enemyList;
     private List<Story> storyList;
+    private List<Question> questionList;
+    private List<Alternatives> alternativesList;
 
     @RequestMapping(name="/")
     public String startCreateAdventure () {
         itemList = repositoryItem.findAll();
         enemyList = repositoryEnemy.findAll();
         storyList = repositoryStory.findAll();
+        questionList = repositoryQuestion.findAll();
+        alternativesList = repositoryAlternatives.findAll();
+
+        for (Question question : questionList) {
+            System.out.println("Question: " + question.getQuestionID());
+            System.out.println(question.getQuestionDescription());
+
+            for (Alternatives alternative : question.getAlternativesSet()) {
+                System.out.println(alternative.getText() + "\n Is Correct: " + alternative.getCorrect());
+            }
+
+        }
 
         return "start-create-adventure";
     }
