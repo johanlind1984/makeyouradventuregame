@@ -1,10 +1,13 @@
 package com.johanlind.makeyouradventure.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="item")
 public class Item {
+    // Annotations Done
 
     @Id
     @Column(name="id_item")
@@ -23,13 +26,21 @@ public class Item {
     @Column(name="item_containing_description")
     private String containingItemDescription;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="item_containing_item")
-    private Item containingItem;
+    // Fix mapping one to one Item
+    @Column(name="item_containing_item")
+    private int containingItemId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="item_required_item")
-    private Item requiredItem;
+    // Fix mapping one to one Item
+    @Column(name="item_required_item")
+    private int requiredItemId;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "room_item",
+            joinColumns = { @JoinColumn(name = "id_item") },
+            inverseJoinColumns = { @JoinColumn(name = "room_id") }
+    )
+    private List<Room> roomList = new ArrayList<>();
 
     public Item() {
     }
@@ -74,19 +85,27 @@ public class Item {
         this.containingItemDescription = containingItemDescription;
     }
 
-    public Item getContainingItem() {
-        return containingItem;
+    public int getContainingItemId() {
+        return containingItemId;
     }
 
-    public void setContainingItem(Item containingItem) {
-        this.containingItem = containingItem;
+    public void setContainingItemId(int containingItemId) {
+        this.containingItemId = containingItemId;
     }
 
-    public Item getRequiredItem() {
-        return requiredItem;
+    public int getRequiredItemId() {
+        return requiredItemId;
     }
 
-    public void setRequiredItem(Item requiredItem) {
-        this.requiredItem = requiredItem;
+    public void setRequiredItemId(int requiredItemId) {
+        this.requiredItemId = requiredItemId;
+    }
+
+    public List<Room> getRoomList() {
+        return roomList;
+    }
+
+    public void setRoomList(List<Room> roomList) {
+        this.roomList = roomList;
     }
 }

@@ -1,7 +1,10 @@
 package com.johanlind.makeyouradventure.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="room")
@@ -18,26 +21,58 @@ public class Room {
     @Column(name="room_imagepath")
     private String imagePath;
 
-//    @OneToMany
-//    private List<Integer> exitsList;
-//
-//    @OneToOne
-//    private List<Item> item;
-//
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="room_question_id")
+    @ManyToMany(mappedBy = "roomList")
+    private List<Item> roomItems = new ArrayList<>();
+
+//    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
+//              fetch = FetchType.LAZY, optional = false)
 //    private Question question;
 //
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="room_item_required_id")
+//    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
+//              fetch = FetchType.LAZY, optional = false)
 //    private Item requiredItem;
 //
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="room_enemy_id")
+//    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
+//              fetch = FetchType.LAZY, optional = false)
 //    private Enemy enemy;
-
-    private boolean isSolved;
+//
+//    private boolean isSolved;
+//
+//    private List<Integer> exitsList;
 
     public Room() {
     }
+
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public List<Item> getRoomItems() {
+        return roomItems;
+    }
+
+    public void setRoomItems(List<Item> roomItems) {
+        this.roomItems = roomItems;
+    }
+
 }

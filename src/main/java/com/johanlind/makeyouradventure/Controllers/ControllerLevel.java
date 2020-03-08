@@ -20,12 +20,15 @@ public class ControllerLevel {
     private RepositoryQuestion repositoryQuestion;
     @Autowired
     private RepositoryAlternatives repositoryAlternatives;
+    @Autowired
+    private RepositoryRoom repositoryRoom;
 
     private List<Item> itemList;
     private List<Enemy> enemyList;
     private List<Story> storyList;
     private List<Question> questionList;
     private List<Alternatives> alternativesList;
+    private List<Room> roomList;
 
     @RequestMapping(name="/")
     public String startCreateAdventure () {
@@ -34,15 +37,16 @@ public class ControllerLevel {
         storyList = repositoryStory.findAll();
         questionList = repositoryQuestion.findAll();
         alternativesList = repositoryAlternatives.findAll();
+        roomList = repositoryRoom.findAll();
 
-        for (Question question : questionList) {
-            System.out.println("Question: " + question.getQuestionID());
-            System.out.println(question.getQuestionDescription());
 
-            for (Alternatives alternative : question.getAlternativesSet()) {
-                System.out.println(alternative.getText() + "\n Is Correct: " + alternative.getCorrect());
+        for (Room room : roomList) {
+            System.out.println(room.getDescription());
+            System.out.println("items in room " + room.getRoomId() + ": ");
+            for (Item item : room.getRoomItems()) {
+                System.out.println(item.getItemName());
+                System.out.println (item.getItemName() + " contains: " + item.getContainingItemId());
             }
-
         }
 
         return "start-create-adventure";
