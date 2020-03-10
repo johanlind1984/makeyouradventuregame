@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="story")
 public class Story {
+    // Annotations Done
 
     @Id
     @Column(name="id_story")

@@ -16,8 +16,8 @@ public class Level {
     @Column(name="level_name")
     String levelName;
 
-//    @ManyToMany(mappedBy = "level_room")
-//    @JoinTable()
+//    @ManyToMany(mappedBy = "level")
+//    @JoinTable(name="level_room")
 //    private Map<Integer, Room> roomList;
 
     public Level() {
