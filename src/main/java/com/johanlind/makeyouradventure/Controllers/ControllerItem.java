@@ -1,6 +1,6 @@
 package com.johanlind.makeyouradventure.Controllers;
 
-import com.johanlind.makeyouradventure.Entity.Item;
+import com.johanlind.makeyouradventure.Entity.ItemContainer;
 import com.johanlind.makeyouradventure.Repositories.RepositoryItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,16 +18,16 @@ public class ControllerItem {
     @Autowired
     RepositoryItem repositoryItem;
 
-    List<Item> itemList = new ArrayList<>();
+    List<ItemContainer> itemContainerList = new ArrayList<>();
 
-    public List<Item> getAllItems() {
-        return itemList;
+    public List<ItemContainer> getAllItems() {
+        return itemContainerList;
     }
 
     public void listAllitems() {
-        for (Item item : itemList) {
-            System.out.println(item.getItemID());
-            System.out.println(item.getDescription());
+        for (ItemContainer itemContainer : itemContainerList) {
+            System.out.println(itemContainer.getItemID());
+            System.out.println(itemContainer.getDescription());
             System.out.println("================================");
             System.out.println("");
         }

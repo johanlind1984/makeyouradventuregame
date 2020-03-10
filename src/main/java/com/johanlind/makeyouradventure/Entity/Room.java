@@ -2,9 +2,7 @@ package com.johanlind.makeyouradventure.Entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name="room")
@@ -22,7 +20,7 @@ public class Room {
     private String imagePath;
 
     @ManyToMany(mappedBy = "roomList")
-    private List<Item> roomItems = new ArrayList<>();
+    private List<ContainerIdentifier> containerIdentifierList = new ArrayList<>();
 
 //    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
 //              fetch = FetchType.LAZY, optional = false)
@@ -67,12 +65,11 @@ public class Room {
         this.imagePath = imagePath;
     }
 
-    public List<Item> getRoomItems() {
-        return roomItems;
+    public List<ContainerIdentifier> getContainerIdentifierList() {
+        return containerIdentifierList;
     }
 
-    public void setRoomItems(List<Item> roomItems) {
-        this.roomItems = roomItems;
+    public void setContainerIdentifierList(List<ContainerIdentifier> containerIdentifierList) {
+        this.containerIdentifierList = containerIdentifierList;
     }
-
 }
