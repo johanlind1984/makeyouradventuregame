@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@Controller
+@Controller()
+@RequestMapping("/level")
 public class ControllerLevel {
     @Autowired
-    private RepositoryItem repositoryItem;
+    private RepositoryItemContainer repositoryItemContainer;
     @Autowired
     private RepositoryEnemy repositoryEnemy;
     @Autowired
@@ -39,14 +40,20 @@ public class ControllerLevel {
     private List<ItemKey> itemKeyList;
     private List<Level> levelList;
 
-    @RequestMapping(name="/")
-    public String startCreateAdventure () {
+    @RequestMapping(value="/instantiatelevels")
+    public String instantiate() {
+        levelList = repositoryLevel.findAll();
+        return "index";
+    }
+
+    @RequestMapping(value="/runtests")
+    public String runTests() {
         itemKeyList = repositoryItemKey.findAll();
         enemyList = repositoryEnemy.findAll();
         storyList = repositoryStory.findAll();
         questionList = repositoryQuestion.findAll();
         alternativesList = repositoryAlternatives.findAll();
-        itemContainerList = repositoryItem.findAll();
+        itemContainerList = repositoryItemContainer.findAll();
         containerIdentifierList = repositoryContainerIdentifier.findAll();
         roomList = repositoryRoom.findAll();
         levelList = repositoryLevel.findAll();

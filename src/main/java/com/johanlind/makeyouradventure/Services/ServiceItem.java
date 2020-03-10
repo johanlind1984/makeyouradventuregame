@@ -1,7 +1,7 @@
 package com.johanlind.makeyouradventure.Services;
 
 import com.johanlind.makeyouradventure.Entity.ItemContainer;
-import com.johanlind.makeyouradventure.Repositories.RepositoryItem;
+import com.johanlind.makeyouradventure.Repositories.RepositoryItemContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
 public class ServiceItem {
 
     @Autowired
-    private RepositoryItem repositoryItem;
+    private RepositoryItemContainer repositoryItemContainer;
 
     public List<ItemContainer> getAllitems() {
-        return repositoryItem.findAll();
+        return repositoryItemContainer.findAll();
     }
 }

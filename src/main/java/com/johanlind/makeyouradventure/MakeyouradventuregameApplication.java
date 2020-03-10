@@ -1,6 +1,5 @@
 package com.johanlind.makeyouradventure;
 
-import com.johanlind.makeyouradventure.Controllers.ControllerItem;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
