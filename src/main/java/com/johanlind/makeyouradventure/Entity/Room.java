@@ -3,6 +3,7 @@ package com.johanlind.makeyouradventure.Entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="room")
@@ -22,17 +23,18 @@ public class Room {
     @ManyToMany(mappedBy = "roomList")
     private List<ContainerIdentifier> containerIdentifierList = new ArrayList<>();
 
-//    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
-//              fetch = FetchType.LAZY, optional = false)
-//    private Question question;
-//
+    @ManyToMany(mappedBy = "roomSetQuestions")
+    private Set<Question> questionSet;
+
+    @ManyToMany(mappedBy = "roomSetEnemies")
+    private List<Enemy> enemyList;
+
+    // CONSIDER IF THIS MAPPING NEEDS A UNIQUE CLASS, LIKE "LOCK" WHICH NEEDS TO BE UNLOCKED TO ENTER THE ROOM.
+    // COULD ALSO BE VERY POSSIBLE TO USE A ItemContainer AS A LOCK.
 //    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
 //              fetch = FetchType.LAZY, optional = false)
 //    private Item requiredItem;
 //
-//    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
-//              fetch = FetchType.LAZY, optional = false)
-//    private Enemy enemy;
 //
 //    private boolean isSolved;
 //
@@ -71,5 +73,21 @@ public class Room {
 
     public void setContainerIdentifierList(List<ContainerIdentifier> containerIdentifierList) {
         this.containerIdentifierList = containerIdentifierList;
+    }
+
+    public Set<Question> getQuestionSet() {
+        return questionSet;
+    }
+
+    public void setQuestionSet(Set<Question> questionSet) {
+        this.questionSet = questionSet;
+    }
+
+    public List<Enemy> getEnemyList() {
+        return enemyList;
+    }
+
+    public void setEnemyList(List<Enemy> enemyList) {
+        this.enemyList = enemyList;
     }
 }

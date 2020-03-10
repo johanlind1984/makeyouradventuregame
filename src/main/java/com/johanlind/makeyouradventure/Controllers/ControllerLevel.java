@@ -58,7 +58,23 @@ public class ControllerLevel {
                 for (ItemKey item : container.getListItems()) {
                     System.out.println("Containing item: " + item.getItemKeyName());
                 }
+            }
+            System.out.println("");
+            System.out.println("QUESTIONTEST: ");
+            for (Question question :room.getQuestionSet()) {
+                System.out.println("QUESTION: ");
+                System.out.println(question.getQuestionDescription());
+                System.out.println("ALTERNATIVES: ");
+                for (Alternatives alternatives : question.getAlternativesSet()) {
+                    System.out.println(alternatives.getText());
+                    System.out.println("CORRECT: " + alternatives.getCorrect());
+                }
+            }
 
+            System.out.println("");
+            System.out.println("ENEMYTEST: ");
+            for (Enemy enemy : room.getEnemyList()) {
+                System.out.println("Enemy: " + enemy.getNameEnemy());
             }
         }
         return "start-create-adventure";
