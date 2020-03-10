@@ -29,6 +29,14 @@ public class Room {
     @ManyToMany(mappedBy = "roomSetEnemies")
     private List<Enemy> enemyList;
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "level_room",
+            joinColumns = { @JoinColumn(name = "level_room_room_id") },
+            inverseJoinColumns = { @JoinColumn(name = "level_room_level_id") }
+    )
+    private List<Level> levelList;
+
     // CONSIDER IF THIS MAPPING NEEDS A UNIQUE CLASS, LIKE "LOCK" WHICH NEEDS TO BE UNLOCKED TO ENTER THE ROOM.
     // COULD ALSO BE VERY POSSIBLE TO USE A ItemContainer AS A LOCK.
 //    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
@@ -36,7 +44,7 @@ public class Room {
 //    private Item requiredItem;
 //
 //
-//    private boolean isSolved;
+// private boolean isSolved;
 //
 //    private List<Integer> exitsList;
 
@@ -89,5 +97,13 @@ public class Room {
 
     public void setEnemyList(List<Enemy> enemyList) {
         this.enemyList = enemyList;
+    }
+
+    public List<Level> getLevelList() {
+        return levelList;
+    }
+
+    public void setLevelList(List<Level> levelList) {
+        this.levelList = levelList;
     }
 }
