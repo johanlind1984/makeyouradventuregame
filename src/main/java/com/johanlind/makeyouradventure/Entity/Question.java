@@ -21,12 +21,20 @@ public class Question {
     @Column(name="question_description")
     private String questionDescription;
 
-     @OneToMany(
+    @OneToMany(
              mappedBy = "question",
              cascade = CascadeType.ALL,
              orphanRemoval = true
-     )
-     private Set<Alternatives> alternativesSet = new HashSet<>();
+    )
+    private Set<Alternatives> alternativesSet = new HashSet<>();
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "room_question",
+            joinColumns = { @JoinColumn(name = "room_question_room_id") },
+            inverseJoinColumns = { @JoinColumn(name = "room_question_question_id") }
+    )
+    private Set<Room> roomSetQuestions;
 
     public Question() {
     }
@@ -61,5 +69,13 @@ public class Question {
 
     public void setAlternativesSet(Set<Alternatives> alternativesSet) {
         this.alternativesSet = alternativesSet;
+    }
+
+    public Set<Room> getRoomSetQuestions() {
+        return roomSetQuestions;
+    }
+
+    public void setRoomSetQuestions(Set<Room> roomSetQuestions) {
+        this.roomSetQuestions = roomSetQuestions;
     }
 }

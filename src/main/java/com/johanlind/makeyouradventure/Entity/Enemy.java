@@ -1,6 +1,8 @@
 package com.johanlind.makeyouradventure.Entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="enemy")
@@ -26,6 +28,14 @@ public class Enemy {
 
     @Column(name="high_damage_enemy")
     private int enemyHighDamage;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "room_enemies",
+            joinColumns = { @JoinColumn(name = "room_enemies_room_id") },
+            inverseJoinColumns = { @JoinColumn(name = "room_enemies_enemy_id") }
+    )
+    private List<Room> roomSetEnemies;
 
     public Enemy() {
     }
@@ -76,5 +86,13 @@ public class Enemy {
 
     public void setEnemyHighDamage(int enemyHighDamage) {
         this.enemyHighDamage = enemyHighDamage;
+    }
+
+    public List<Room> getRoomListEnemies() {
+        return roomSetEnemies;
+    }
+
+    public void setRoomListEnemies(List<Room> roomSetEnemies) {
+        this.roomSetEnemies = roomSetEnemies;
     }
 }
