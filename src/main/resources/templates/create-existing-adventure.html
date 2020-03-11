@@ -32,32 +32,39 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" th:action="@{/menuChoice}">
+			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
 					Create your own adventure
 				</span>
 
-				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="1">
-						Create New Adventure From Existing Rooms
-					</button>
+
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<label class="label-input100" for="name">What's the name of your adventure?</label>
+					<input id="name" class="input100" type="text" name="name" placeholder="Enter your adventures name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<label class="label-input100" for="story">Whats the story of your adventure?</label>
+					<textarea id="story" class="input100" name="message" placeholder="Type your story here..."></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<label class="label-input100" for="win">Whats the message if the player wins?</label>
+					<textarea id="win" class="input100" name="message" placeholder="Type your win message here..."></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<label class="label-input100" for="die">Whats the message if the player lose?</label>
+					<textarea id="die" class="input100" name="message" placeholder="Type your 'game over' message here..."></textarea>
+					<span class="focus-input100"></span>
 				</div>
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="2">
-						Create Your Own Adventure
-					</button>
-				</div>
-
-				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="3">
-						Create A Item, Enemy or Room
-					</button>
-				</div>
-
-				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="4">
-						Browse Items, Enemies, Rooms and Levels
+					<button class="contact100-form-btn" type="submit" th:value="submit">
+						That's it, take me to the next step.
 					</button>
 				</div>
 

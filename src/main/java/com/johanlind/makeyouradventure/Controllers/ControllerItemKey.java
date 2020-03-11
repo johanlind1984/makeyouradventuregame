@@ -22,6 +22,18 @@ public class ControllerItemKey {
         return "index";
     }
 
+    @RequestMapping(value="/saveitemkey")
+    public String save(ItemKey itemKey) {
+        repositoryItemKey.save(itemKey);
+        return "index";
+    }
+
+    public ItemKey getItemKeyById(int itemKeyId){
+        ItemKey itemKey = repositoryItemKey.getOne(4);
+        System.out.println(itemKey.getItemKeyName());
+        return itemKey;
+    }
+
     public List<ItemKey> getAllItems() {
         return itemKeyList;
     }
