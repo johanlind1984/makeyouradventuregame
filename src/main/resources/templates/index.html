@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html>
-<title>W3.CSS Template</title>
-<style>
-
-</style>
-<body class="w3-black">
-<h1 align="center">Welcome to Adventure Maker</h1>
-<img align="center" src="images/dungeon.jpg">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<span th:text="'Welcome ' + ${user.username}"></span>
+<form class="contact100-form validate-form" th:action="@{logged-in/menuChoice}">
+	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="1">
+	Create New Adventure From Existing Rooms
+	</button>
+	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="2">
+	Create Your Own Adventure
+	</button>
+	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="3">
+	Create A Item, Enemy or Room
+	</button>
+	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="4">
+	Browse Items, Enemies, Rooms and Levels
+	</button>
+	</form>
 </body>
 </html>
