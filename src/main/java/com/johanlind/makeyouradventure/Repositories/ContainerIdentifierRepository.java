@@ -1,10 +1,10 @@
 package com.johanlind.makeyouradventure.Repositories;
 
 import com.johanlind.makeyouradventure.Entity.Alternatives;
-import com.johanlind.makeyouradventure.Entity.Story;
+import com.johanlind.makeyouradventure.Entity.ContainerIdentifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RepositoryAlternatives extends JpaRepository<Alternatives, Integer> {
+public interface ContainerIdentifierRepository extends JpaRepository<ContainerIdentifier, Integer> {
 }

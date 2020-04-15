@@ -1,16 +1,37 @@
 package com.johanlind.makeyouradventure.Controllers;
 
 import com.johanlind.makeyouradventure.Entity.Story;
+import com.johanlind.makeyouradventure.Entity.User;
+import com.johanlind.makeyouradventure.Repositories.UserAuthorityRepository;
+import com.johanlind.makeyouradventure.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @Controller
-public class ControllerStart {
+@RequestMapping("/logged-in")
+public class LoginController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserAuthorityRepository authorityRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value="/")
-    public String startPage(Model model) {
+    public String startPage(Model model, Principal principal) {
+
+        User user = userRepository.findByUsername(principal.getName());
+        System.out.println(user.getUsername());
         int userMenuChoice = 0;
+        model.addAttribute("user", user);
         model.addAttribute("userMenuChoice", userMenuChoice);
         return "index";
     }

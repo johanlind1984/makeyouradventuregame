@@ -10,25 +10,25 @@ import java.util.List;
 
 @Controller()
 @RequestMapping()
-public class ControllerLevel {
+public class LevelController {
     @Autowired
-    private RepositoryItemContainer repositoryItemContainer;
+    private ItemContainerRepository itemContainerRepository;
     @Autowired
-    private RepositoryEnemy repositoryEnemy;
+    private EnemyRepository enemyRepository;
     @Autowired
-    private RepositoryStory repositoryStory;
+    private StoryRepository storyRepository;
     @Autowired
-    private RepositoryQuestion repositoryQuestion;
+    private QuestionRepository questionRepository;
     @Autowired
-    private RepositoryAlternatives repositoryAlternatives;
+    private AlternativesRepository alternativesRepository;
     @Autowired
-    private RepositoryRoom repositoryRoom;
+    private RoomRepository repositoryRoom;
     @Autowired
-    private RepositoryContainerIdentifier repositoryContainerIdentifier;
+    private ContainerIdentifierRepository containerIdentifierRepository;
     @Autowired
-    private RepositoryItemKey repositoryItemKey;
+    private ItemKeyRepository itemKeyRepository;
     @Autowired
-    private RepositoryLevel repositoryLevel;
+    private LevelRepository levelRepository;
 
     private List<ItemContainer> itemContainerList;
     private List<Enemy> enemyList;
@@ -42,21 +42,21 @@ public class ControllerLevel {
 
     @RequestMapping(value="/instantiatelevels")
     public String instantiate() {
-        levelList = repositoryLevel.findAll();
+        levelList = levelRepository.findAll();
         return "index";
     }
 
     @RequestMapping(value="/runtests")
     public String runTests() {
-        itemKeyList = repositoryItemKey.findAll();
-        enemyList = repositoryEnemy.findAll();
-        storyList = repositoryStory.findAll();
-        questionList = repositoryQuestion.findAll();
-        alternativesList = repositoryAlternatives.findAll();
-        itemContainerList = repositoryItemContainer.findAll();
-        containerIdentifierList = repositoryContainerIdentifier.findAll();
+        itemKeyList = itemKeyRepository.findAll();
+        enemyList = enemyRepository.findAll();
+        storyList = storyRepository.findAll();
+        questionList = questionRepository.findAll();
+        alternativesList = alternativesRepository.findAll();
+        itemContainerList = itemContainerRepository.findAll();
+        containerIdentifierList = containerIdentifierRepository.findAll();
         roomList = repositoryRoom.findAll();
-        levelList = repositoryLevel.findAll();
+        levelList = levelRepository.findAll();
 
 
         for (Level level : levelList) {
