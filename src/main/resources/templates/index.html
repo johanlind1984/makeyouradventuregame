@@ -4,7 +4,7 @@
 </head>
 <body>
 <span th:text="'Welcome ' + ${user.username}"></span>
-<form class="contact100-form validate-form" th:action="@{logged-in/menuChoice}">
+<form th:action="@{menuChoice}">
 	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="1">
 	Create New Adventure From Existing Rooms
 	</button>
