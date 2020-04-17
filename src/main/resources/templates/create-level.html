@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+
+<div align="center">
+    <form th:action="@{/wizard/save-level}" th:object="${level}">
+	<span>
+	The name of the game...
+	</span>
+        <br><br>
+
+        <label>What do you want to call your adventure?</label>
+        <br>
+        <textarea th:field="${level.levelName}" placeholder="Enter your levels name (max 100 characters)" required maxlength="100"></textarea>
+        <br><br>
+        <button type="submit" th:value="submit">
+            That's it, take me to the next step.
+        </button>
+
+    </form>
+</div>
+</body>
+</html>

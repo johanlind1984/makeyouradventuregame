@@ -24,6 +24,9 @@ public class Story {
     @Column(name="story_die")
     private String die;
 
+    @OneToOne(mappedBy = "story")
+    private Level level;
+
     public Story() {
     }
 
@@ -65,5 +68,13 @@ public class Story {
 
     public void setDie(String die) {
         this.die = die;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 }

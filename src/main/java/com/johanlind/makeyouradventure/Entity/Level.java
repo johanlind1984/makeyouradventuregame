@@ -17,8 +17,20 @@ public class Level {
     @Column(name="level_name")
     String levelName;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="level_story_id")
+    private Story story;
+
     @ManyToMany(mappedBy = "levelList")
     private List<Room> roomList;
+
+    public Story getStory() {
+        return story;
+    }
+
+    public void setStory(Story story) {
+        this.story = story;
+    }
 
     public Level() {
 

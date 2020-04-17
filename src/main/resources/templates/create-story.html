@@ -5,7 +5,7 @@
 <body>
 
 <div align="center">
-<form th:action="@{/story/save-story}" th:object="${story}">
+<form th:action="@{/wizard/save-story}" th:object="${story}">
 	<span>
 	Whats the Story?
 	</span>
@@ -27,7 +27,7 @@
 	<br>
     <textarea th:field="${story.die}" placeholder="Type your 'game over' message here..."></textarea>
 	<br><br>
-    <button type="submit" th:value="submit">
+    <button type="submit" th:name="levelid" th:value="${level.levelId}">
         That's it, take me to the next step.
     </button>
 
