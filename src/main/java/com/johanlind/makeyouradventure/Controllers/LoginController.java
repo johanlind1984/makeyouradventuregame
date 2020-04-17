@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 
@@ -37,7 +38,7 @@ public class LoginController {
     }
 
     @RequestMapping(value="/menuChoice")
-    public String directUserStarMenu(
+    public ModelAndView directUserStarMenu(
             @RequestParam(value = "userMenuChoice", required = false) Integer userMenuChoice, Model theModel) {
 
         System.out.println("Choice: " + userMenuChoice);
@@ -45,16 +46,16 @@ public class LoginController {
         switch (userMenuChoice) {
             case 1:
                 theModel.addAttribute("story", new Story());
-                return "create-existing-adventure";
+                return new ModelAndView("redirect:/wizard/start-wizard");
             case 2:
-                theModel.addAttribute("story", new Story());
-                return "create-new-adventure";
+
+                return new ModelAndView("redirect:/wizard/start-wizard");
             case 3:
-                return "create-resources";
+                return new ModelAndView("redirect:/wizard/start-wizard");
             case 4:
-                return "browse-resources";
+                return new ModelAndView("redirect:/wizard/start-wizard");
             default:
-                return "something-went-wrong";
+                return new ModelAndView("redirect:/error/errorhandler");
         }
     }
 }

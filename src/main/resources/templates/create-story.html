@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+
+<div align="center">
+<form th:action="@{/wizard/save-story}" th:object="${story}">
+	<span>
+	Whats the Story?
+	</span>
+	<br><br>
+
+    <label>What's do you want to call your adventure?</label>
+	<br>
+	<textarea th:field="${story.name}" placeholder="Enter your adventures name (max 200 characters)" required></textarea>
+	<br><br>
+    <label>Whats the story of your adventure?</label>
+	<br>
+    <textarea th:field="${story.beginning}" placeholder="Type your story here..."></textarea>
+	<br><br>
+    <label>Whats the message if the player wins?</label>
+	<br>
+    <textarea th:field="${story.end}" placeholder="Type your win message here..."></textarea>
+	<br><br>
+    <label>Whats the message if the player lose?</label>
+	<br>
+    <textarea th:field="${story.die}" placeholder="Type your 'game over' message here..."></textarea>
+	<br><br>
+    <button type="submit" th:name="levelid" th:value="${level.levelId}">
+        That's it, take me to the next step.
+    </button>
+
+</form>
+</div>
+</body>
+</html>

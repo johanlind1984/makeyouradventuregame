@@ -12,6 +12,9 @@ public class Story {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStory;
 
+    @Column(name="story_name")
+    private String name;
+
     @Column(name="story_beginning")
     private String beginning;
 
@@ -20,6 +23,9 @@ public class Story {
 
     @Column(name="story_die")
     private String die;
+
+    @OneToOne(mappedBy = "story")
+    private Level level;
 
     public Story() {
     }
@@ -30,6 +36,14 @@ public class Story {
 
     public void setIdStory(int idStory) {
         this.idStory = idStory;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBeginning() {
@@ -54,5 +68,13 @@ public class Story {
 
     public void setDie(String die) {
         this.die = die;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 }
