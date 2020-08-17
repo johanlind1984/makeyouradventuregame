@@ -1,12 +1,34 @@
 <!DOCTYPE html>
-<html>
-<title>Make Your Own Adventure</title>
-<style>
-
-</style>
-<body class="w3-black" background="black">
-<h1 align="center">Welcome to Adventure Maker</h1>
-<p align="center">This is a game where you create your own adventure. Create your own set of rooms with enemies, items and questions</p>
-<p align="center"><img align="center" src="images/dungeon.jpg"></p>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="css/theme3.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">MYOA</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">START</a></li>
+            <li><a href="/wizard/start-wizard">MAKE A ADVENTURE</a></li>
+            <li><a href="#">PLAY A ADVENTURE</a></li>
+            <li><a href="#">ABOUT</a></li>
+        </ul>
+    </div>
+</nav>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>This is where your adventure begins...</h1>
+        <p class="lead text-muted">Make your own adventure with your own or other creators resources.</p>
+        <p>
+            <a href="/wizard/start-wizard" class="btn btn-primary my-2">MAKE A ADVENTURE</a>
+            <a href="#" class="btn btn-secondary my-2">PLAY A ADVENTURE</a>
+        </p>
+    </div>
+</section>
 </body>
 </html>

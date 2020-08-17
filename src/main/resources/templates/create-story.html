@@ -1,31 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+	<link rel="stylesheet" href="css/theme.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">MYOA</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">START</a></li>
+			<li><a href="/wizard/start-wizard">MAKE A ADVENTURE</a></li>
+			<li><a href="#">PLAY A ADVENTURE</a></li>
+			<li><a href="#">ABOUT</a></li>
+		</ul>
+	</div>
+</nav>
+<br><br>
+<div class="container">
+	<form th:action="@{/wizard/save-level}" th:object="${level}">
+		<div class="form-group">
+			<label>
+				THE NAME OF THE GAME...
+			</label>
+		</div>
+		<div class="form-group">
+			<label>
+				WHATS THE NAME OF YOUR ADVENTURE?
+			</label>
+			<input type="text" class="form-control" id="adventureName" aria-describedby="nameHelp" placeholder="Whats the adventures name?">
+		</div>
+		<div class="form-group">
+			<label>
+				WHATS THE STORY?
+			</label>
+			<input type="text" class="form-control" id="story" aria-describedby="storyHelp" placeholder="Whats the story?">
+		</div>
+		<button type="submit" th:value="submit" class="btn btn-primary">
+			NEXT >
+		</button>
+
+	</form>
+</div>
 
 <div align="center">
 <form th:action="@{/wizard/save-story}" th:object="${story}">
 	<span>
-	Whats the Story?
+	What's the Story?
 	</span>
 	<br><br>
-
-    <label>What's do you want to call your adventure?</label>
+    <label>What do you want to call your adventure?</label>
 	<br>
-	<textarea th:field="${story.name}" placeholder="Enter your adventures name (max 200 characters)" required></textarea>
+	<textarea th:field="${story.name}" placeholder="Enter your adventures name (max 200 characters)" required maxlength="200"></textarea>
 	<br><br>
-    <label>Whats the story of your adventure?</label>
+    <label>What's the story of your adventure?</label>
 	<br>
-    <textarea th:field="${story.beginning}" placeholder="Type your story here..."></textarea>
+    <textarea th:field="${story.beginning}" placeholder="Type your story here (max 2000 characters)" required maxlength="2000"></textarea>
 	<br><br>
-    <label>Whats the message if the player wins?</label>
+    <label>What's the message if the player wins?</label>
 	<br>
-    <textarea th:field="${story.end}" placeholder="Type your win message here..."></textarea>
+    <textarea th:field="${story.end}" placeholder="Type your win message here (max 2000 characters)" required maxlength="2000"></textarea>
 	<br><br>
-    <label>Whats the message if the player lose?</label>
+    <label>What's the message if the player lose?</label>
 	<br>
-    <textarea th:field="${story.die}" placeholder="Type your 'game over' message here..."></textarea>
+    <textarea th:field="${story.die}" placeholder="Type your 'game over' message here (max 2000 characters)" required maxlength="2000"></textarea>
 	<br><br>
     <button type="submit" th:name="levelid" th:value="${level.levelId}">
         That's it, take me to the next step.
