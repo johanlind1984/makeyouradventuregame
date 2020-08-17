@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+	<link rel="stylesheet" href="css/theme3.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-<span th:text="'Welcome ' + ${user.username}"></span>
-<form th:action="@{menuChoice}">
-	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="1">
-	Create New Adventure From Existing Rooms
-	</button>
-	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="2">
-	Create Your Own Adventure
-	</button>
-	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="3">
-	Create A Item, Enemy or Room
-	</button>
-	<button class="contact100-form-btn" type="submit" th:name="userMenuChoice" th:value="4">
-	Browse Items, Enemies, Rooms and Levels
-	</button>
-	</form>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Make Your Adventure</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">Page 1</a></li>
+			<li><a href="#">Page 2</a></li>
+			<li><a href="#">Page 3</a></li>
+		</ul>
+	</div>
+</nav>
+<h1>HEJ!</h1>
+<h2>HEJ!</h2>
+<h3>HEJ!</h3>
+<h4>HEJ!</h4>
+<h5>HEJ!</h5>
+<p>HEJ!HEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJHEJ</p>
+
 </body>
 </html>

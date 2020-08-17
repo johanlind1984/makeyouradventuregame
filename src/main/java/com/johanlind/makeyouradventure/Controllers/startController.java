@@ -8,6 +8,6 @@ public class startController {
 
     @RequestMapping("/")
     public String startPage () {
-        return "start-create-adventure";
+        return "index";
     }
 }
