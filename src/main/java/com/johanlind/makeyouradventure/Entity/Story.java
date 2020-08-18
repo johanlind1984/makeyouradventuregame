@@ -24,7 +24,7 @@ public class Story {
     @Column(name="story_die")
     private String die;
 
-    @ManyToMany(mappedBy = "levelList")
+    @ManyToMany(mappedBy = "storyList")
     private List<Room> roomList;
 
     public Story() {
@@ -70,4 +70,11 @@ public class Story {
         this.die = die;
     }
 
+    public List<Room> getRoomList() {
+        return roomList;
+    }
+
+    public void setRoomList(List<Room> roomList) {
+        this.roomList = roomList;
+    }
 }

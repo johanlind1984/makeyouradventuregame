@@ -1,7 +1,6 @@
 package com.johanlind.makeyouradventure.Controllers;
 
 import com.johanlind.makeyouradventure.Entity.Story;
-import com.johanlind.makeyouradventure.Repositories.LevelRepository;
 import com.johanlind.makeyouradventure.Repositories.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,18 +15,15 @@ public class WizardController {
     @Autowired
     private StoryRepository storyRepository;
 
-    @Autowired
-    private LevelRepository levelRepository;
-
     @RequestMapping("start-wizard")
     public ModelAndView startWizard(Model theModel) {
-        return new ModelAndView("redirect:/wizard/create-level");
+        return new ModelAndView("redirect:/wizard/create-story");
     }
 
-    @RequestMapping("/create-level")
+    @RequestMapping("/create-story")
     public String createStory(Model theModel)  {
         theModel.addAttribute("story", new Story());
-        return "create-level";
+        return "create-story";
     }
 
     @RequestMapping("/save-level")

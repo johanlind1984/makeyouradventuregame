@@ -27,8 +27,6 @@ public class LevelController {
     private ContainerIdentifierRepository containerIdentifierRepository;
     @Autowired
     private ItemKeyRepository itemKeyRepository;
-    @Autowired
-    private LevelRepository levelRepository;
 
     private List<ItemContainer> itemContainerList;
     private List<Enemy> enemyList;
@@ -38,11 +36,10 @@ public class LevelController {
     private List<Room> roomList;
     private List<ContainerIdentifier> containerIdentifierList;
     private List<ItemKey> itemKeyList;
-    private List<Level> levelList;
 
     @RequestMapping(value="/instantiatelevels")
     public String instantiate() {
-        levelList = levelRepository.findAll();
+        storyList = storyRepository.findAll();
         return "index";
     }
 
@@ -56,16 +53,14 @@ public class LevelController {
         itemContainerList = itemContainerRepository.findAll();
         containerIdentifierList = containerIdentifierRepository.findAll();
         roomList = repositoryRoom.findAll();
-        levelList = levelRepository.findAll();
 
-
-        for (Level level : levelList) {
+        for (Story story : storyList) {
             System.out.println("\n\n\n");
             System.out.println("LEVELTEST: ");
-            System.out.println("Level id: " + level.getLevelId() + " Level description: " + level.getLevelName());
+            System.out.println("Level id: " + story.getIdStory() + " Level description: " + story.getName());
 
             System.out.println("ROOMTEST: ");
-            for (Room room : level.getRoomList()) {
+            for (Room room : story.getRoomList()) {
                 System.out.println("Room " + room.getRoomId() + " Description: " + room.getDescription());
                 System.out.println("ITEMTEST: ");
                 for (ContainerIdentifier container : room.getContainerIdentifierList()) {
