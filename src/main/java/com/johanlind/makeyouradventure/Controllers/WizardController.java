@@ -28,8 +28,6 @@ public class WizardController {
 
     @RequestMapping("/save-level")
     public String saveLevel(@ModelAttribute("story") Story story, Model theModel) {
-//        story.setLevel(story.getLevel());
-//        levelRepository.save(story.getLevel());
         storyRepository.save(story);
         // add object to model and redirect to the next step, f.ex. rooms
         return "create-room";
