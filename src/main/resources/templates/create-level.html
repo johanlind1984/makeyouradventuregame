@@ -22,35 +22,34 @@
 </nav>
 <br><br>
 <div class="container">
-    <form th:action="@{/wizard/save-level}" th:object="${level}">
+    <form th:action="@{/wizard/save-level}" th:object="${story}">
         <div class="form-group">
             <label>
-                THE NAME OF THE GAME...
+                WHATS THE NAME OF YOUR STORY?
             </label>
-        </div>
-        <div class="form-group">
-            <label>
-                WHATS THE NAME OF YOUR ADVENTURE?
-            </label>
-            <input type="text" class="form-control" id="adventureName" aria-describedby="nameHelp" placeholder="Whats the adventures name?">
+            <input type="text" class="form-control" id="adventureName" aria-describedby="storyNameHelp"
+                   placeholder="Enter your storys name (max 200 characters)" th:field="${story.name}" required maxlength="200">
         </div>
         <div class="form-group">
             <label>
                 WHATS THE STORY?
             </label>
-            <input type="text" class="form-control" id="story" aria-describedby="storyHelp" placeholder="Whats the story?">
+            <input type="text" class="form-control" id="story" aria-describedby="storyHelp"
+                      placeholder="Enter your story here (max 2000 characters)" th:field="${story.beginning}" required maxlength="2000">
         </div>
         <div class="form-group">
             <label>
                 WHAT HAPPENS WHEN THE PLAYER WIN?
             </label>
-            <input type="text" class="form-control" id="win" aria-describedby="winHelp" placeholder="Whats the endning when winning?">
+            <input type="text" class="form-control" id="win" aria-describedby="winHelp"
+                   th:field="${story.end}" placeholder="Type your win message here (max 2000 characters)" required maxlength="2000">
         </div>
         <div class="form-group">
             <label>
                 WHAT HAPPENS WHEN THE PLAYER LOSE?
             </label>
-            <input type="text" class="form-control" id="lose" aria-describedby="loseHelp" placeholder="Whats the endning when losing?">
+            <input type="text" class="form-control" id="lose" aria-describedby="loseHelp"
+                   th:field="${story.die}" placeholder="Type your 'game over' message here (max 2000 characters)" required maxlength="2000">
         </div>
         <button type="submit" th:value="submit" class="btn btn-primary">
             NEXT >

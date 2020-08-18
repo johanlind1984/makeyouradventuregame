@@ -31,11 +31,11 @@ public class Room {
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
-            name = "level_room",
-            joinColumns = { @JoinColumn(name = "level_room_room_id") },
-            inverseJoinColumns = { @JoinColumn(name = "level_room_level_id") }
+            name = "story_room",
+            joinColumns = { @JoinColumn(name = "story_room_room_id") },
+            inverseJoinColumns = { @JoinColumn(name = "story_room_story_id") }
     )
-    private List<Level> levelList;
+    private List<Story> storyList;
 
     // CONSIDER IF THIS MAPPING NEEDS A UNIQUE CLASS, LIKE "LOCK" WHICH NEEDS TO BE UNLOCKED TO ENTER THE ROOM.
     // COULD ALSO BE VERY POSSIBLE TO USE A ItemContainer AS A LOCK.
@@ -99,11 +99,11 @@ public class Room {
         this.enemyList = enemyList;
     }
 
-    public List<Level> getLevelList() {
-        return levelList;
+    public List<Story> getStoryList() {
+        return storyList;
     }
 
-    public void setLevelList(List<Level> levelList) {
-        this.levelList = levelList;
+    public void setStoryList(List<Story> storyList) {
+        this.storyList = storyList;
     }
 }

@@ -55,11 +55,11 @@
 	<br><br>
     <label>What do you want to call your adventure?</label>
 	<br>
-	<textarea th:field="${story.name}" placeholder="Enter your adventures name (max 200 characters)" required maxlength="200"></textarea>
+	<textarea  placeholder="Enter your adventures name (max 200 characters)" th:field="${story.name}" required maxlength="200"></textarea>
 	<br><br>
     <label>What's the story of your adventure?</label>
 	<br>
-    <textarea th:field="${story.beginning}" placeholder="Type your story here (max 2000 characters)" required maxlength="2000"></textarea>
+    <textarea placeholder="Type your story here (max 2000 characters)" th:field="${story.beginning}" required maxlength="2000"></textarea>
 	<br><br>
     <label>What's the message if the player wins?</label>
 	<br>

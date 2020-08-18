@@ -1,11 +1,11 @@
 package com.johanlind.makeyouradventure.Entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="story")
 public class Story {
-    // Annotations Done
 
     @Id
     @Column(name="id_story")
@@ -24,8 +24,8 @@ public class Story {
     @Column(name="story_die")
     private String die;
 
-    @OneToOne(mappedBy = "story")
-    private Level level;
+    @ManyToMany(mappedBy = "levelList")
+    private List<Room> roomList;
 
     public Story() {
     }
@@ -70,11 +70,4 @@ public class Story {
         this.die = die;
     }
 
-    public Level getLevel() {
-        return level;
-    }
-
-    public void setLevel(Level level) {
-        this.level = level;
-    }
 }
