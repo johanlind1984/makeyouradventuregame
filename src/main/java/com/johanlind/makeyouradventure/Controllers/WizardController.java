@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+
 @Controller
 @RequestMapping("/wizard")
 public class WizardController {
@@ -30,11 +32,11 @@ public class WizardController {
     @RequestMapping("/save-story")
     public String saveLevel(@ModelAttribute("story") Story story, Model theModel) {
         // Bör jag istället ladda modellen med story som innehåller rum eller bör jag bara skicka ett rum till modellen?
-        Story storyWithId = storyRepository.save(story);
+        Story storyFromDatabase = storyRepository.save(story);
         Room room = new Room();
-        room.getStoryList().add(storyWithId);
+        room.setStoryList(new ArrayList<>());
+        room.getStoryList().add(storyFromDatabase);
         theModel.addAttribute(room);
         return "create-room";
     }
-
 }

@@ -2,6 +2,7 @@ package com.johanlind.makeyouradventure.Entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -37,6 +38,9 @@ public class Room {
     )
     private List<Story> storyList;
 
+    public Room() {
+
+    }
     // CONSIDER IF THIS MAPPING NEEDS A UNIQUE CLASS, LIKE "LOCK" WHICH NEEDS TO BE UNLOCKED TO ENTER THE ROOM.
     // COULD ALSO BE VERY POSSIBLE TO USE A ItemContainer AS A LOCK.
 //    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL,
@@ -48,8 +52,6 @@ public class Room {
 //
 //    private List<Integer> exitsList;
 
-    public Room() {
-    }
 
     public int getRoomId() {
         return roomId;

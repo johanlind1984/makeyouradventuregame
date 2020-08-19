@@ -28,28 +28,32 @@
 				DESCRIBE THE ROOM:
 			</label>
 			<input type="text" class="form-control" id="adventureName" aria-describedby="storyNameHelp"
-				   placeholder="Enter your storys name (max 200 characters)" th:field="${}" required maxlength="200">
+				   placeholder="Describe the room here..." th:field="${room.description}" required maxlength="2000">
 		</div>
 		<div class="form-group">
 			<label>
 				SELECT A CONTAINER:
 			</label>
-			<input type="text" class="form-control" id="story" aria-describedby="storyHelp"
-				   placeholder="Enter your story here (max 2000 characters)" th:field="${}" required maxlength="2000">
+
+<!--			THIS SELECT NEEDS A LOOP TO ITERATE THROUGH ALL AVAILABLE ENEMIES-->
+			<select type="text" class="form-control" id="story" th:field="${room.enemyList}">
+			</select>
 		</div>
 		<div class="form-group">
 			<label>
 				SELECT A ENEMY:
 			</label>
-			<input type="text" class="form-control" id="win" aria-describedby="winHelp"
-				   th:field="${}" placeholder="Type your win message here (max 2000 characters)" required maxlength="2000">
+			<!--			THIS SELECT NEEDS A LOOP TO ITERATE THROUGH ALL AVAILABLE CONTAINERS-->
+			<select type="text" class="form-control" id="win" th:field="${room.containerIdentifierList}">
+			</select>
 		</div>
 		<div class="form-group">
 			<label>
 				SELECT A RIDDLE:
 			</label>
-			<input type="text" class="form-control" id="lose" aria-describedby="loseHelp"
-				   th:field="${}" placeholder="Type your 'game over' message here (max 2000 characters)" required maxlength="2000">
+			<!--			THIS SELECT NEEDS A LOOP TO ITERATE THROUGH ALL AVAILABLE QUESTIONSETS-->
+			<select type="text" class="form-control" id="lose" th:field="${room.questionSet}">
+			</select>
 		</div>
 		<button type="submit" th:value="submit" class="btn btn-primary">
 			NEXT >

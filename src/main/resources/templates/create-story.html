@@ -27,29 +27,29 @@
 			<label>
 				WHATS THE NAME OF YOUR STORY?
 			</label>
-			<input type="text" class="form-control" id="adventureName" aria-describedby="storyNameHelp"
-				   placeholder="Enter your storys name (max 200 characters)" th:field="${story.name}" required maxlength="200">
+			<input type="text" class="form-control" placeholder="Enter your storys name (max 200 characters)"
+				   th:field="${story.name}" required maxlength="200">
 		</div>
 		<div class="form-group">
 			<label>
 				WHATS THE STORY?
 			</label>
-			<input type="text" class="form-control" id="story" aria-describedby="storyHelp"
-				   placeholder="Enter your story here (max 2000 characters)" th:field="${story.beginning}" required maxlength="2000">
+			<input type="text" class="form-control" placeholder="Enter your story here (max 2000 characters)"
+				   th:field="${story.beginning}" required maxlength="2000">
 		</div>
 		<div class="form-group">
 			<label>
 				WHAT HAPPENS WHEN THE PLAYER WIN?
 			</label>
-			<input type="text" class="form-control" id="win" aria-describedby="winHelp"
-				   th:field="${story.end}" placeholder="Type your win message here (max 2000 characters)" required maxlength="2000">
+			<input type="text" class="form-control" placeholder="Type your win message here (max 2000 characters)"
+				   th:field="${story.end}" required maxlength="2000">
 		</div>
 		<div class="form-group">
 			<label>
 				WHAT HAPPENS WHEN THE PLAYER LOSE?
 			</label>
-			<input type="text" class="form-control" id="lose" aria-describedby="loseHelp"
-				   th:field="${story.die}" placeholder="Type your 'game over' message here (max 2000 characters)" required maxlength="2000">
+			<input type="text" class="form-control" placeholder="Type your 'game over' message here (max 2000 characters)"
+				   th:field="${story.die}" required maxlength="2000">
 		</div>
 		<button type="submit" th:value="submit" class="btn btn-primary">
 			NEXT >
