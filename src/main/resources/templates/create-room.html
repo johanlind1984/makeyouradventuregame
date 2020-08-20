@@ -22,34 +22,38 @@
 </nav>
 <br><br>
 <div class="container">
-	<form th:action="@{/wizard/save-story}" th:object="${story}">
+	<form th:action="@{/wizard/save-room}" th:object="${story}">
 		<div class="form-group">
 			<label>
-				WHATS THE NAME OF YOUR STORY?
+				DESCRIBE THE ROOM:
 			</label>
-			<input type="text" class="form-control" placeholder="Enter your storys name (max 200 characters)"
-				   th:field="${story.name}" required maxlength="200">
+			<input type="text" class="form-control" id="adventureName" aria-describedby="storyNameHelp"
+				   placeholder="Describe the room here..." th:field="${room.description}" required maxlength="2000">
 		</div>
 		<div class="form-group">
 			<label>
-				WHATS THE STORY?
+				SELECT A CONTAINER:
 			</label>
-			<input type="text" class="form-control" placeholder="Enter your story here (max 2000 characters)"
-				   th:field="${story.beginning}" required maxlength="2000">
+
+<!--			THIS SELECT NEEDS A LOOP TO ITERATE THROUGH ALL AVAILABLE ENEMIES-->
+			<select type="text" class="form-control" id="story" th:field="${room.enemyList}">
+			</select>
 		</div>
 		<div class="form-group">
 			<label>
-				WHAT HAPPENS WHEN THE PLAYER WIN?
+				SELECT A ENEMY:
 			</label>
-			<input type="text" class="form-control" placeholder="Type your win message here (max 2000 characters)"
-				   th:field="${story.end}" required maxlength="2000">
+			<!--			THIS SELECT NEEDS A LOOP TO ITERATE THROUGH ALL AVAILABLE CONTAINERS-->
+			<select type="text" class="form-control" id="win" th:field="${room.containerIdentifierList}">
+			</select>
 		</div>
 		<div class="form-group">
 			<label>
-				WHAT HAPPENS WHEN THE PLAYER LOSE?
+				SELECT A RIDDLE:
 			</label>
-			<input type="text" class="form-control" placeholder="Type your 'game over' message here (max 2000 characters)"
-				   th:field="${story.die}" required maxlength="2000">
+			<!--			THIS SELECT NEEDS A LOOP TO ITERATE THROUGH ALL AVAILABLE QUESTIONSETS-->
+			<select type="text" class="form-control" id="lose" th:field="${room.questionSet}">
+			</select>
 		</div>
 		<button type="submit" th:value="submit" class="btn btn-primary">
 			NEXT >
