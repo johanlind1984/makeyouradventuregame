@@ -1,6 +1,8 @@
 package com.johanlind.makeyouradventure.Services;
 
 import com.johanlind.makeyouradventure.Config.StorageProperties;
+import com.johanlind.makeyouradventure.Exception.FileNotFoundException;
+import com.johanlind.makeyouradventure.Exception.StorageException;
 import com.johanlind.makeyouradventure.Interface.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

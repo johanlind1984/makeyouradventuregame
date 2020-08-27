@@ -21,6 +21,8 @@ public class ContainerControllerItem {
     public String instantiate() {
         itemContainerList = itemContainerRepository.findAll();
         return "index";
+
+
     }
 
     public List<ItemContainer> getAllItems() {

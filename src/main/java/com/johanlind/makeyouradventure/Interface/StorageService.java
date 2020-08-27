@@ -1,4 +1,4 @@
-package com.johanlind.makeyouradventure.Services;
+package com.johanlind.makeyouradventure.Interface;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,7 +10,7 @@ public interface StorageService {
 
     void init();
 
-    void store(MultipartFile file);
+    String store(MultipartFile file);
 
     Stream<Path> loadAll();
 

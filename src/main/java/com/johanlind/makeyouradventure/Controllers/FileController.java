@@ -1,10 +1,7 @@
 package com.johanlind.makeyouradventure.Controllers;
 
-import java.io.IOException;
-import java.util.stream.Collectors;
-
+import com.johanlind.makeyouradventure.Commons.FileResponse;
 import com.johanlind.makeyouradventure.Interface.StorageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -12,54 +9,65 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/upload")
-public class FileUploadController {
+public class FileController {
 
-    private final StorageService storageService;
+    private StorageService storageService;
 
-    @Autowired
-    public FileUploadController(StorageService storageService) {
+    public FileController(StorageService storageService) {
         this.storageService = storageService;
     }
 
     @GetMapping("/")
-    public String listUploadedFiles(Model model) throws IOException {
+    public String listAllFiles(Model model) {
 
         model.addAttribute("files", storageService.loadAll().map(
-                path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
-                        "serveFile", path.getFileName().toString()).build().toUri().toString())
+                path -> ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/download/")
+                        .path(path.getFileName().toString())
+                        .toUriString())
                 .collect(Collectors.toList()));
 
-        return "uploadForm";
+        return "listFiles";
     }
 
-    @GetMapping("/files/{filename:.+}")
+    @GetMapping("/download/{filename:.+}")
     @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+    public ResponseEntity<Resource> downloadFile(@PathVariable String filename) {
 
-        Resource file = storageService.loadAsResource(filename);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+        Resource resource = storageService.loadAsResource(filename);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\"" + resource.getFilename() + "\"")
+                .body(resource);
     }
 
-    @PostMapping("/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+    @PostMapping("/upload-file")
+    @ResponseBody
+    public FileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+        String name = storageService.store(file);
 
-        storageService.store(file);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
+        String uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/download/")
+                .path(name)
+                .toUriString();
 
-        return "redirect:/";
+        return new FileResponse(name, uri, file.getContentType(), file.getSize());
     }
 
-    @ExceptionHandler(IOException.class)
-    public ResponseEntity<?> handleStorageFileNotFound(IOException exc) {
-        return ResponseEntity.notFound().build();
+    @PostMapping("/upload-multiple-files")
+    @ResponseBody
+    public List<FileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+        return Arrays.stream(files)
+                .map(file -> uploadFile(file))
+                .collect(Collectors.toList());
     }
-
 }
